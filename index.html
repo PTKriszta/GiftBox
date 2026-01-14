@@ -7,189 +7,371 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; color: #334155; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; color: #1e5750; } /* Mélyzöld címek */
         .brand-text { color: #3aa094; }
         .brand-bg { background-color: #3aa094; }
+        .brand-bg-dark { background-color: #2d7d74; } /* Sötétebb türkiz a kontrasztért */
         .brand-border { border-color: #3aa094; }
-        .hover-lift { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease; }
-        .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15); }
-        .image-gradient { background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 100%); }
+        .section-spacing { padding-top: 5rem; padding-bottom: 5rem; }
+        .soft-green-bg { background-color: #f0fdfa; } /* Nagyon halvány türkiz háttér */
     </style>
 </head>
-<body class="bg-white text-stone-900 leading-relaxed overflow-x-hidden">
+<body class="bg-white overflow-x-hidden">
 
     <!-- Navigáció -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-xl border-b border-stone-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex justify-between items-center">
-            <a href="#" class="text-xl sm:text-2xl font-black tracking-tighter flex items-center gap-2">
-                <span class="brand-bg w-8 h-8 rounded-lg flex items-center justify-center text-white text-lg">G</span>
-                <span>GIFTBOX<span class="text-stone-300">.HU</span></span>
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-teal-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <span class="brand-bg w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-xl group-hover:scale-105 transition-transform">G</span>
+                <span class="text-xl font-black tracking-tighter uppercase text-[#1e5750]">GiftBox<span class="text-teal-300">.hu</span></span>
             </a>
-            <div class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-widest text-stone-500">
-                <a href="#kinalat" class="hover:text-stone-900 transition-colors">Kínálat</a>
-                <a href="#kuldetes" class="hover:text-stone-900 transition-colors">Küldetés</a>
-                <a href="#kapcsolat" class="hover:text-stone-900 transition-colors">Kapcsolat</a>
+            <div class="hidden lg:flex gap-8 text-xs font-bold uppercase tracking-widest text-teal-600">
+                <a href="#problem" class="hover:text-[#3aa094] transition-colors"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Probléma</a>
+                <a href="#opportunity" class="hover:text-[#3aa094] transition-colors"><i class="fa-solid fa-lightbulb mr-1"></i> Lehetőség</a>
+                <a href="#solution" class="hover:text-[#3aa094] transition-colors"><i class="fa-solid fa-box-open mr-1"></i> Termék</a>
+                <a href="#business" class="hover:text-[#3aa094] transition-colors"><i class="fa-solid fa-chart-line mr-1"></i> Üzlet</a>
             </div>
-            <a href="#kinalat" class="brand-bg text-white px-5 sm:px-8 py-2.5 rounded-full text-xs sm:text-sm font-bold hover:opacity-90 transition-all shadow-md active:scale-95">
-                Felfedezés
+            <a href="#contact" class="brand-bg text-white px-6 py-2.5 rounded-full text-xs font-bold hover:brightness-110 transition-all shadow-lg active:scale-95">
+                Kapcsolat <i class="fa-solid fa-arrow-right ml-2"></i>
             </a>
         </div>
     </nav>
 
-    <!-- Hero szekció -->
-    <section class="pt-32 pb-16 sm:pt-48 sm:pb-32 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-12 sm:gap-20">
-            <div class="order-2 lg:order-1 text-center lg:text-left">
-                <span class="brand-text font-bold uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-6 block">A hónap fénypontja</span>
-                <h1 class="text-5xl sm:text-7xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter text-black">
-                    UNBOX<br>HUNGARY.
+    <!-- 1. DIA: BORÍTÓ (HERO) -->
+    <header class="min-h-screen flex items-center pt-20 relative overflow-hidden bg-gradient-to-b from-teal-50 to-white">
+        <!-- Háttér dekoráció -->
+        <div class="absolute right-0 top-0 w-[500px] h-[500px] brand-bg rounded-full opacity-10 blur-[100px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div>
+                <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-teal-100 text-teal-700 text-xs font-bold uppercase tracking-widest mb-6">
+                    <i class="fa-solid fa-star"></i> A hónap fénypontja
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tighter text-[#1e5750]">
+                    UNBOX<br>HUNGARY.<br><span class="brand-text">HAPPINESS.</span>
                 </h1>
-                <p class="text-lg sm:text-xl text-stone-500 max-w-md mx-auto lg:mx-0 mb-10 font-light leading-relaxed">
-                    Prémium meglepetés dobozok hazai manufaktúráktól. Fedezd fel Magyarország legjavát, havonta egyszer.
+                <p class="text-xl text-slate-500 max-w-lg font-light leading-relaxed mb-10">
+                    Magyarország első technológiai inkubátora az előfizetéses dobozok számára.
                 </p>
-                <div class="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
-                    <a href="#kinalat" class="w-full sm:w-auto text-center brand-bg text-white px-10 py-5 rounded-2xl font-black text-lg hover-lift shadow-lg">
-                        Előfizetés indítása
+                <div class="flex gap-4">
+                    <a href="#opportunity" class="brand-bg text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-teal-200/50 hover:translate-y-[-2px] transition-all flex items-center gap-3">
+                        <i class="fa-solid fa-rocket"></i> Ismerd meg a koncepciót
                     </a>
                 </div>
             </div>
-            <div class="order-1 lg:order-2 relative px-4 sm:px-0">
-                <div class="aspect-[4/5] sm:aspect-[3/4] bg-stone-100 rounded-[2.5rem] overflow-hidden rotate-2 shadow-2xl transition-all hover:rotate-0 duration-700">
-                    <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=1200&auto=format&fit=crop" 
-                         alt="[Díszített ajándékdoboz masnival]" 
-                         class="w-full h-full object-cover"
-                         loading="lazy">
+            <div class="relative group">
+                <div class="aspect-square rounded-[3rem] overflow-hidden shadow-2xl relative z-10 border-8 border-white group-hover:scale-[1.02] transition-transform duration-500">
+                    <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="GiftBox">
                 </div>
-                <div class="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 bg-white p-6 sm:p-8 rounded-3xl shadow-2xl border border-stone-50 hidden sm:block">
-                    <p class="text-3xl sm:text-4xl font-black text-black">100%</p>
-                    <p class="text-stone-400 text-[10px] font-bold uppercase tracking-widest">Hazai készítésű</p>
+                <!-- Türkiz keret a fekete helyett -->
+                <div class="absolute -bottom-6 -left-6 w-full h-full border-4 brand-border rounded-[3rem] -z-0 opacity-50"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. DIA: PROBLÉMA -->
+    <section id="problem" class="section-spacing bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-[#1e5750]">A PIACI SZAKADÉK</h2>
+                <p class="text-lg text-slate-500">A kétoldalú probléma, ami jelenleg fojtogatja a piacot.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Gyártói oldal -->
+                <div class="bg-teal-50 p-10 rounded-3xl border border-teal-100 hover:shadow-lg transition-all hover:bg-white">
+                    <div class="w-14 h-14 brand-bg rounded-2xl flex items-center justify-center text-white text-2xl mb-6 shadow-md">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase text-[#1e5750]">Gyártói Oldal</h3>
+                    <ul class="space-y-4 text-slate-600">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i> Nincs kiszámítható havi bevétel (MRR).</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i> Hiányzik a technológiai háttér.</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i> Bonyolult logisztika.</li>
+                    </ul>
+                </div>
+                <!-- Vásárlói oldal -->
+                <div class="bg-teal-50 p-10 rounded-3xl border border-teal-100 hover:shadow-lg transition-all hover:bg-white">
+                    <div class="w-14 h-14 brand-bg rounded-2xl flex items-center justify-center text-white text-2xl mb-6 shadow-md">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase text-[#1e5750]">Vásárlói Oldal</h3>
+                    <ul class="space-y-4 text-slate-600">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i> Nincs központi felfedező felület.</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i> Időigényes kutatás.</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i> Nem egységes vásárlói élmény.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Kínálat -->
-    <section id="kinalat" class="py-24 sm:py-32 bg-stone-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="text-center mb-16 sm:mb-24">
-                <h2 class="text-3xl sm:text-5xl font-black text-black mb-6 uppercase tracking-tight">Válogass a havi csomagokból</h2>
-                <div class="brand-bg h-2 w-20 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 sm:gap-12">
-                <!-- Gasztro -->
-                <div class="bg-white rounded-[2.5rem] p-4 sm:p-5 hover-lift border border-stone-100 group">
-                    <div class="aspect-square rounded-[2rem] overflow-hidden mb-8 relative">
-                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=600&auto=format&fit=crop" 
-                             alt="[Kézműves kávé és csokoládé válogatás]" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                             loading="lazy">
-                        <div class="absolute inset-0 image-gradient opacity-60"></div>
-                    </div>
-                    <div class="px-4 pb-6">
-                        <h3 class="text-2xl font-black text-black mb-3 uppercase tracking-tighter italic">Gasztro</h3>
-                        <p class="text-stone-500 mb-8 font-light text-sm leading-relaxed">Kézműves kávék, különleges lekvárok és hazai fűszerek válogatása minden hónapban.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl font-black text-black">8.990 Ft <span class="text-[10px] font-normal text-stone-400">/ hó</span></span>
-                            <div class="brand-text font-bold text-xs uppercase tracking-widest">Kosárba</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Szépség -->
-                <div class="bg-white rounded-[2.5rem] p-4 sm:p-5 hover-lift border border-stone-100 group">
-                    <div class="aspect-square rounded-[2rem] overflow-hidden mb-8 relative">
-                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=600&auto=format&fit=crop" 
-                             alt="[Természetes kozmetikumok és kényeztető olajok]" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                             loading="lazy">
-                        <div class="absolute inset-0 image-gradient opacity-60"></div>
-                    </div>
-                    <div class="px-4 pb-6">
-                        <h3 class="text-2xl font-black text-black mb-3 uppercase tracking-tighter italic">Szépség</h3>
-                        <p class="text-stone-500 mb-8 font-light text-sm leading-relaxed">Vegyszermentes natúrkozmetikumok és kényeztető ápolás közvetlenül a készítőktől.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl font-black text-black">9.500 Ft <span class="text-[10px] font-normal text-stone-400">/ hó</span></span>
-                            <div class="brand-text font-bold text-xs uppercase tracking-widest">Kosárba</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kreatív -->
-                <div class="bg-white rounded-[2.5rem] p-4 sm:p-5 hover-lift border border-stone-100 group">
-                    <div class="aspect-square rounded-[2rem] overflow-hidden mb-8 relative">
-                        <img src="https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?q=80&w=600&auto=format&fit=crop" 
-                             alt="[Művészeti kellékek és kreatív DIY készlet]" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                             loading="lazy">
-                        <div class="absolute inset-0 image-gradient opacity-60"></div>
-                    </div>
-                    <div class="px-4 pb-6">
-                        <h3 class="text-2xl font-black text-black mb-3 uppercase tracking-tighter italic">Kreatív</h3>
-                        <p class="text-stone-500 mb-8 font-light text-sm leading-relaxed">DIY készletek, minőségi papíráruk és eszközök a hazai alkotók világából.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl font-black text-black">7.990 Ft <span class="text-[10px] font-normal text-stone-400">/ hó</span></span>
-                            <div class="brand-text font-bold text-xs uppercase tracking-widest">Kosárba</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- ÚJ SZEKCIÓ: PIACI LEHETŐSÉG (POZITÍV ÜZENET) -->
+    <section id="opportunity" class="section-spacing brand-bg text-white relative overflow-hidden">
+        <!-- Háttér minta -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <i class="fa-solid fa-box-open absolute top-10 left-10 text-9xl"></i>
+            <i class="fa-solid fa-globe absolute bottom-10 right-10 text-9xl"></i>
         </div>
-    </section>
 
-    <!-- Küldetés / Fenntarthatóság -->
-    <section id="kuldetes" class="py-24 sm:py-32 px-4 sm:px-6">
-        <div class="max-w-5xl mx-auto text-center">
-            <span class="brand-text font-bold uppercase tracking-[0.3em] text-[10px] mb-8 block">Tegyünk együtt a jövőért</span>
-            <h2 class="text-4xl sm:text-6xl md:text-7xl font-black text-black mb-12 tracking-tighter leading-tight uppercase">
-                Minden csomaggal<br class="hidden sm:block"> egy fát ültetsz.
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <div class="inline-block bg-white/20 backdrop-blur-md px-6 py-2 rounded-full mb-8 border border-white/30">
+                <span class="font-bold text-white uppercase tracking-widest text-sm"><i class="fa-solid fa-chart-line mr-2"></i> Globális Trend</span>
+            </div>
+            
+            <h2 class="text-3xl md:text-5xl font-bold mb-8 leading-tight text-white">
+                A „subscription box” piac világszerte robban, de Magyarországon ez még egy teljesen kiaknázatlan terület.
             </h2>
-            <div class="grid lg:grid-cols-2 gap-12 text-left items-center bg-stone-50 p-8 sm:p-16 rounded-[3rem]">
-                <p class="text-lg text-stone-500 font-light leading-relaxed">
-                    A GiftBox nem csak az ajándékozásról szól. Minden eladott 100. doboz után egy hazai őshonos fát ültetünk el alapítványi partnereinkkel. A csomagolásunk 100%-ban műanyagmentes és újrahasznosított papírból készül.
-                </p>
-                <div class="grid grid-cols-2 gap-8">
-                    <div class="border-l-4 brand-border pl-6">
-                        <p class="text-4xl font-black text-black">Zéró</p>
-                        <p class="text-stone-400 text-[10px] uppercase font-bold tracking-widest">Műanyag</p>
+            
+            <p class="text-teal-50 text-xl font-light mb-12 max-w-3xl mx-auto">
+                Két oldalról látunk problémát: a gyártók technológia híján nem tudnak lépni, a vásárlók pedig nem találják a minőséget. Mi ezt a rést töltjük be.
+            </p>
+
+            <!-- KIEMELT ÜZENET -->
+            <div class="bg-white text-[#3aa094] p-8 md:p-12 rounded-[3rem] shadow-2xl inline-block transform hover:scale-105 transition-transform duration-300">
+                <h3 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-2">
+                    AZ „ELŐFIZETÉSEK<br>AMAZONJA” VAGYUNK!
+                </h3>
+                <p class="text-slate-500 font-bold uppercase tracking-[0.3em] text-xs">Minden egy helyen • Technológia • Logisztika</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. DIA: TERMÉK (Kategóriák) -->
+    <section id="solution" class="section-spacing">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-black mb-4 text-center uppercase text-[#1e5750]">Unbox Hungary</h2>
+            <p class="text-center text-slate-500 mb-12">A meglepetés élménye – Kategóriáink</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Gasztro -->
+                <div class="group relative overflow-hidden rounded-[2rem] shadow-lg aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#1e5750] to-transparent opacity-90 flex flex-col justify-end p-8 text-white">
+                        <div class="mb-2 text-teal-300 text-3xl"><i class="fa-solid fa-mug-hot"></i></div>
+                        <h3 class="text-2xl font-bold uppercase mb-1">Gasztro</h3>
+                        <p class="text-sm text-teal-100">Kávé & Kézműves ízek</p>
                     </div>
-                    <div class="border-l-4 brand-border pl-6">
-                        <p class="text-4xl font-black text-black">100%</p>
-                        <p class="text-stone-400 text-[10px] uppercase font-bold tracking-widest">Újrahasznosított</p>
+                </div>
+                <!-- Szépség -->
+                <div class="group relative overflow-hidden rounded-[2rem] shadow-lg aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#1e5750] to-transparent opacity-90 flex flex-col justify-end p-8 text-white">
+                        <div class="mb-2 text-teal-300 text-3xl"><i class="fa-solid fa-spa"></i></div>
+                        <h3 class="text-2xl font-bold uppercase mb-1">Szépségápolás</h3>
+                        <p class="text-sm text-teal-100">Natúrkozmetikumok</p>
+                    </div>
+                </div>
+                <!-- Hobbi -->
+                <div class="group relative overflow-hidden rounded-[2rem] shadow-lg aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#1e5750] to-transparent opacity-90 flex flex-col justify-end p-8 text-white">
+                        <div class="mb-2 text-teal-300 text-3xl"><i class="fa-solid fa-palette"></i></div>
+                        <h3 class="text-2xl font-bold uppercase mb-1">Hobbi</h3>
+                        <p class="text-sm text-teal-100">Kreatív kikapcsolódás</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Kapcsolat / Footer -->
-    <footer id="kapcsolat" class="bg-black text-white pt-24 pb-12 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-16 mb-24">
-                <div>
-                    <h2 class="text-4xl sm:text-5xl font-black mb-8 tracking-tighter uppercase italic">Kezdjük el.<br>Még ma.</h2>
-                    <p class="text-stone-400 max-w-sm mb-12 font-light">Lépj be a hazai manufaktúrák világába és legyen minden hónapod fénypontja egy GiftBox.</p>
-                    <div class="flex gap-6">
-                        <a href="#" class="w-14 h-14 rounded-2xl border border-stone-800 flex items-center justify-center hover:brand-bg hover:border-transparent transition-all group shadow-sm">
-                            <span class="font-bold text-xs group-hover:scale-110 transition-transform tracking-widest uppercase">FB</span>
-                        </a>
-                        <a href="#" class="w-14 h-14 rounded-2xl border border-stone-800 flex items-center justify-center hover:brand-bg hover:border-transparent transition-all group shadow-sm">
-                            <span class="font-bold text-xs group-hover:scale-110 transition-transform tracking-widest uppercase">IG</span>
-                        </a>
+    <!-- 4-5. DIA: MEGOLDÁS ÉS FOLYAMAT (Türkiz alap) -->
+    <section class="section-spacing bg-gradient-to-br from-teal-50 to-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-black mb-16 text-center text-[#1e5750] uppercase">Így működik a rendszer</h2>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border-b-4 brand-border relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-teal-50 rounded-bl-[3rem] -mr-4 -mt-4 transition-all group-hover:bg-teal-100"></div>
+                    <span class="text-6xl font-black text-teal-100 absolute top-4 right-4 group-hover:text-teal-200 transition-colors">01</span>
+                    
+                    <div class="w-16 h-16 brand-bg rounded-2xl flex items-center justify-center text-white text-3xl mb-6 shadow-lg">
+                        <i class="fa-solid fa-handshake"></i>
                     </div>
+                    <h3 class="text-xl font-black mb-3 text-[#1e5750] uppercase">A Partner</h3>
+                    <p class="text-slate-500">Létrehozza boltját, feltölti ajánlatát, fogadja a rendeléseket.</p>
                 </div>
-                <div class="flex flex-col justify-end items-start lg:items-end">
-                    <a href="mailto:hello@giftbox.hu" class="text-2xl sm:text-4xl md:text-5xl font-light hover:brand-text transition-all mb-4 break-all">hello@giftbox.hu</a>
-                    <p class="text-stone-600 text-sm font-bold tracking-widest uppercase">Budapest • Magyarország</p>
+                <!-- 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border-b-4 brand-border relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-teal-50 rounded-bl-[3rem] -mr-4 -mt-4 transition-all group-hover:bg-teal-100"></div>
+                    <span class="text-6xl font-black text-teal-100 absolute top-4 right-4 group-hover:text-teal-200 transition-colors">02</span>
+
+                    <div class="w-16 h-16 brand-bg rounded-2xl flex items-center justify-center text-white text-3xl mb-6 shadow-lg">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-3 text-[#1e5750] uppercase">A Platform</h3>
+                    <p class="text-slate-500">Biztosítja a fizetést, marketinget futtat, menedzseli a logisztikát.</p>
+                </div>
+                <!-- 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border-b-4 brand-border relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-teal-50 rounded-bl-[3rem] -mr-4 -mt-4 transition-all group-hover:bg-teal-100"></div>
+                    <span class="text-6xl font-black text-teal-100 absolute top-4 right-4 group-hover:text-teal-200 transition-colors">03</span>
+
+                    <div class="w-16 h-16 brand-bg rounded-2xl flex items-center justify-center text-white text-3xl mb-6 shadow-lg">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-3 text-[#1e5750] uppercase">A Vevő</h3>
+                    <p class="text-slate-500">Felfedezi a dobozokat, egy kattintással előfizet, élvezi a meglepetést.</p>
                 </div>
             </div>
-            <div class="pt-12 border-t border-stone-900 flex flex-col md:flex-row justify-between gap-8 items-center">
-                <p class="text-stone-600 text-[10px] font-bold uppercase tracking-[0.3em]">© 2026 GIFTBOX.HU — MODERN ARTISAN TECH</p>
-                <div class="flex gap-10 text-[10px] text-stone-600 font-bold uppercase tracking-widest">
-                    <a href="#" class="hover:text-white transition-colors">Általános Szerződési Feltételek</a>
-                    <a href="#" class="hover:text-white transition-colors">Adatvédelem</a>
+        </div>
+    </section>
+
+    <!-- 7-8. DIA: ÜZLETI MODELL & VERSENYELŐNY -->
+    <section id="business" class="section-spacing bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Bevételek -->
+            <h2 class="text-3xl font-black mb-12 text-center text-[#1e5750] uppercase">Bevételi Források</h2>
+            <div class="grid md:grid-cols-3 gap-6 mb-24">
+                <div class="bg-teal-50 p-8 rounded-2xl text-center border-2 border-teal-100 hover:border-teal-400 transition-colors">
+                    <i class="fa-solid fa-percent text-4xl brand-text mb-4"></i>
+                    <h4 class="font-black text-xl mb-2 text-[#1e5750]">JUTALÉK</h4>
+                    <p class="text-3xl font-bold brand-text mb-2">10-15%</p>
+                    <p class="text-xs text-slate-400 uppercase">Minden eladott doboz után</p>
+                </div>
+                <div class="bg-teal-50 p-8 rounded-2xl text-center border-2 border-teal-100 hover:border-teal-400 transition-colors">
+                    <i class="fa-solid fa-star text-4xl brand-text mb-4"></i>
+                    <h4 class="font-black text-xl mb-2 text-[#1e5750]">PARTNERI DÍJAK</h4>
+                    <p class="text-3xl font-bold brand-text mb-2">FIX</p>
+                    <p class="text-xs text-slate-400 uppercase">Prémium kiemelésért</p>
+                </div>
+                <div class="bg-teal-50 p-8 rounded-2xl text-center border-2 border-teal-100 hover:border-teal-400 transition-colors">
+                    <i class="fa-solid fa-dolly text-4xl brand-text mb-4"></i>
+                    <h4 class="font-black text-xl mb-2 text-[#1e5750]">LOGISZTIKA</h4>
+                    <p class="text-3xl font-bold brand-text mb-2">DÍJ</p>
+                    <p class="text-xs text-slate-400 uppercase">Fulfillment szolgáltatás</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. DIA: FENNTARTHATÓSÁG (Türkiz alap, fehér tartalom) -->
+    <section class="section-spacing brand-bg text-white relative">
+         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl font-black mb-4 uppercase text-white">A fenntarthatóság a DNS-ünkben van</h2>
+            <p class="text-teal-100 mb-12 text-lg">Zöld jövőt építünk a technológiával</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Faültetés -->
+                <div class="p-10 bg-white/10 rounded-3xl backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all text-left flex items-center gap-6">
+                    <div class="w-20 h-20 bg-white text-[#3aa094] rounded-full flex items-center justify-center text-4xl shadow-lg shrink-0">
+                        <i class="fa-solid fa-tree"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-black text-2xl mb-1 uppercase">Faültetési Program</h3>
+                        <p class="text-teal-50">Minden 100. doboz után egy hazai őshonos fát ültetünk.</p>
+                    </div>
+                </div>
+                <!-- Rövid ellátási lánc -->
+                <div class="p-10 bg-white/10 rounded-3xl backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all text-left flex items-center gap-6">
+                    <div class="w-20 h-20 bg-white text-[#3aa094] rounded-full flex items-center justify-center text-4xl shadow-lg shrink-0">
+                        <i class="fa-solid fa-route"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-black text-2xl mb-1 uppercase">Rövid Ellátási Lánc</h3>
+                        <p class="text-teal-50">Kizárólag hazai gyártók, minimalizált szállítási út.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10-11. DIA: ÚTITERV ÉS PÉNZÜGYEK -->
+    <section id="roadmap" class="section-spacing bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+            <!-- Útiterv -->
+            <div>
+                <h2 class="text-3xl font-black mb-8 uppercase text-[#1e5750]">Növekedési Útiterv</h2>
+                <div class="space-y-8 border-l-4 border-teal-100 pl-8 ml-4">
+                    <div class="relative">
+                        <div class="absolute -left-[45px] top-1 w-6 h-6 brand-bg rounded-full border-4 border-white shadow-sm"></div>
+                        <h4 class="font-bold text-xl text-[#1e5750]">1. Év: Piacépítés</h4>
+                        <p class="text-slate-500"><i class="fa-solid fa-check text-[#3aa094] mr-2"></i>1.200 előfizető, 30 partner.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[45px] top-1 w-6 h-6 bg-slate-200 rounded-full border-4 border-white shadow-sm"></div>
+                        <h4 class="font-bold text-xl text-slate-700">2. Év: Terjeszkedés</h4>
+                        <p class="text-slate-500">Regionális (V4) előkészítés, 4.000 előfizető.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[45px] top-1 w-6 h-6 bg-slate-200 rounded-full border-4 border-white shadow-sm"></div>
+                        <h4 class="font-bold text-xl text-slate-700">3. Év: Skálázás</h4>
+                        <p class="text-slate-500">10.000+ előfizető, saját fulfillment center.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pénzügyek - Türkiz kártya -->
+            <div class="brand-bg-dark text-white p-12 rounded-[3rem] shadow-xl relative overflow-hidden">
+                <i class="fa-solid fa-coins absolute -right-10 -bottom-10 text-9xl text-white/10"></i>
+                <h2 class="text-3xl font-black mb-8 uppercase">Projekciók</h2>
+                <div class="space-y-6 relative z-10">
+                    <div class="flex justify-between items-center border-b border-white/20 pb-4">
+                        <span class="text-teal-100">Átlagos Doboz Ár</span>
+                        <span class="font-bold text-xl">9.000 Ft</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-white/20 pb-4">
+                        <span class="text-teal-100">Átlagos Jutalék</span>
+                        <span class="font-bold text-xl">12%</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-white/20 pb-4">
+                        <span class="text-teal-100">Break-even</span>
+                        <span class="font-bold text-xl">1. év Q3</span>
+                    </div>
+                    <div class="mt-8">
+                        <p class="text-sm text-teal-200 uppercase font-bold mb-2">Várható árbevétel (3. év)</p>
+                        <p class="text-5xl font-black text-white">120M Ft</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12-13. DIA: JÖVŐKÉP -->
+    <section class="section-spacing soft-green-bg text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-black text-[#1e5750] mb-8 uppercase leading-tight">"Nem egy webshop vagyunk,<br>hanem egy szoftvercég."</h2>
+            <p class="text-slate-500 text-lg mb-12">A befektetés egy piacot egyesítő, skálázható technológiába történik.</p>
+            
+            <div class="bg-white p-8 rounded-3xl text-left border border-teal-100 shadow-lg">
+                <h3 class="text-xl font-bold mb-6 brand-text uppercase"><i class="fa-solid fa-chess mr-2"></i> Stratégiai Elemzés</h3>
+                <div class="grid grid-cols-2 gap-6 text-sm">
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-plus text-[#3aa094] mt-1"></i> <div><strong class="text-[#1e5750]">Erősségek:</strong> Tech háttér, First Mover.</div></div>
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-minus text-red-400 mt-1"></i> <div><strong class="text-[#1e5750]">Gyengeségek:</strong> Logisztikai komplexitás.</div></div>
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-arrow-trend-up text-[#3aa094] mt-1"></i> <div><strong class="text-[#1e5750]">Lehetőségek:</strong> V4 régió, B2B szektor.</div></div>
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-shield-halved text-red-400 mt-1"></i> <div><strong class="text-[#1e5750]">Veszélyek:</strong> Gazdasági változások.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. DIA: ZÁRÁS (FOOTER) - Türkiz háttér -->
+    <footer id="contact" class="brand-bg text-white pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto text-center lg:text-left">
+            <div class="grid lg:grid-cols-2 gap-20 items-end mb-24">
+                <div>
+                    <h2 class="text-6xl font-black mb-8 text-white tracking-tighter uppercase">GiftBox.hu</h2>
+                    <p class="text-2xl text-teal-100 font-light italic mb-8">Unbox Hungary. Unbox Happiness.</p>
+                    <div class="inline-block bg-white/20 px-4 py-2 rounded-lg backdrop-blur-md">
+                        <p class="text-xs uppercase font-bold tracking-[0.5em] text-white">SparkUP csapata</p>
+                    </div>
+                </div>
+                <div class="flex flex-col lg:items-end">
+                    <p class="text-teal-200 uppercase text-[10px] font-bold tracking-widest mb-4">Stratégiai partnerünk</p>
+                    <div class="text-4xl font-black border-t border-teal-400 pt-4 italic uppercase text-white">Szoftvercég.</div>
+                </div>
+            </div>
+            <div class="border-t border-teal-500 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-teal-100 text-[10px] font-bold uppercase tracking-widest">© 2026 GiftBox.hu — Minden jog fenntartva</p>
+                <div class="flex gap-8 text-lg text-white">
+                    <a href="#" class="hover:text-teal-200 transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-teal-200 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-teal-200 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
